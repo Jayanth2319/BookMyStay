@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 18efa680c124aa45c2e6c03235aef961fb09b260
 # Book My Stay - Hotel Booking Management System
 
 ## Overview
@@ -55,6 +58,43 @@ Single Room -> Available: 4
 Double Room -> Available: 3
 Suite Room -> Available: 1
 
+<<<<<<< HEAD
+## Use Case 4: Room Search & Availability Check
+
+### Goal
+Enable guests to view available rooms and their details without modifying system state, reinforcing safe data access and clear separation of responsibilities.
+
+### Actor
+- **Guest** – initiates a search to view available room options.
+- **Search Service** – handles read-only access to inventory and room information.
+
+### Flow
+1. Guest initiates a room search request.
+2. The system retrieves availability data from the inventory.
+3. Room details and pricing are obtained from room objects.
+4. Unavailable room types are filtered out.
+5. Available room types and their details are displayed.
+6. System state remains unchanged.
+
+### Key Concepts Used
+- **Read-Only Access** – search does not alter inventory.
+- **Defensive Programming** – filters out unavailable rooms.
+- **Separation of Concerns** – search logic isolated from booking logic.
+- **Inventory as State Holder** – only retrieves counts, no updates.
+- **Domain Model Usage** – room objects provide descriptive info.
+- **Validation Logic** – excludes zero-availability rooms.
+
+### Expected Output
+=== Available Rooms ===
+Type: Single Room, Beds: 1, Price: ₹1500.0
+Available: 2
+
+Type: Suite Room, Beds: 3, Price: ₹5000.0
+Available: 1
+
+
+=======
+>>>>>>> 18efa680c124aa45c2e6c03235aef961fb09b260
 ## Author
 Jayanth
 =======
@@ -81,4 +121,7 @@ User – runs the application to view predefined room types and their availabili
 - **Static Availability Representation** – Availability stored in simple variables.
 - **Separation of Domain and State** – Objects represent rooms, variables represent availability.
 
+<<<<<<< HEAD
+=======
 >>>>>>> 04d63952ce2bf9c104239c1054eddb0cf77d3866
+>>>>>>> 18efa680c124aa45c2e6c03235aef961fb09b260
