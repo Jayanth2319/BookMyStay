@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 18efa680c124aa45c2e6c03235aef961fb09b260
 # Book My Stay - Hotel Booking Management System
 
 ## Overview
@@ -54,6 +58,7 @@ Single Room -> Available: 4
 Double Room -> Available: 3
 Suite Room -> Available: 1
 
+<<<<<<< HEAD
 ## Use Case 4: Room Search & Availability Check
 
 ### Goal
@@ -88,6 +93,8 @@ Type: Suite Room, Beds: 3, Price: ₹5000.0
 Available: 1
 
 
+=======
+>>>>>>> 18efa680c124aa45c2e6c03235aef961fb09b260
 ## Author
 Jayanth
 =======
@@ -114,3 +121,7 @@ User – runs the application to view predefined room types and their availabili
 - **Static Availability Representation** – Availability stored in simple variables.
 - **Separation of Domain and State** – Objects represent rooms, variables represent availability.
 
+<<<<<<< HEAD
+=======
+>>>>>>> 04d63952ce2bf9c104239c1054eddb0cf77d3866
+>>>>>>> 18efa680c124aa45c2e6c03235aef961fb09b260
