@@ -21,14 +21,3 @@ User – runs the application to view predefined room types and their availabili
 - **Static Availability Representation** – Availability stored in simple variables.
 - **Separation of Domain and State** – Objects represent rooms, variables represent availability.
 
-### Expected Output
-```text
-=== Room Types & Availability Demo ===
-Type: Single Room, Beds: 1, Price: ₹1500.0
-Available: Yes
-
-Type: Double Room, Beds: 2, Price: ₹2500.0
-Available: No
-
-Type: Suite Room, Beds: 3, Price: ₹5000.0
-Available: Yes
