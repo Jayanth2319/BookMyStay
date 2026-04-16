@@ -54,7 +54,6 @@ Single Room -> Available: 4
 Double Room -> Available: 3
 Suite Room -> Available: 1
 
-<<<<<<< HEAD
 ## Use Case 4: Room Search & Availability Check
 
 ### Goal
@@ -87,36 +86,6 @@ Available: 2
 
 Type: Suite Room, Beds: 3, Price: ₹5000.0
 Available: 1
-
-
-=======
->>>>>>> 18efa680c124aa45c2e6c03235aef961fb09b260
-## Author
-Jayanth
-=======
-## Use Case 2: Basic Room Types & Static Availability
-
-### Goal
-Introduce object modeling through inheritance and abstraction before introducing data structures, allowing focus on domain design rather than optimization.
-
-### Actor
-User – runs the application to view predefined room types and their availability.
-
-### Flow
-1. User runs the application.
-2. Room objects representing different room types are created.
-3. Availability for each room type is stored using simple variables.
-4. Room details and availability information are printed to the console.
-5. Application terminates.
-
-### Key Concepts Used
-- **Abstract Class** – `Room` defines common attributes and enforces structure.
-- **Inheritance** – `SingleRoom`, `DoubleRoom`, `SuiteRoom` extend `Room`.
-- **Polymorphism** – Rooms referenced via `Room` type for uniform handling.
-- **Encapsulation** – Attributes like beds, size, price are controlled.
-- **Static Availability Representation** – Availability stored in simple variables.
-- **Separation of Domain and State** – Objects represent rooms, variables represent availability.
-
 
 ## Use Case 5: Booking Request (First-Come-First-Served)
 
@@ -157,3 +126,44 @@ Handle multiple booking requests fairly by introducing a request intake mechanis
 **Drawbacks of Previous Use Case:**  
 - UC4 allowed room visibility but did not handle booking intent.  
 - Without a request intake mechanism, simultaneous booking attempts could not be managed fairly.  
+
+## Use Case 6: Reservation Confirmation & Room Allocation
+
+**Goal:**  
+Confirm booking requests by assigning rooms safely while ensuring inventory consistency and preventing double-booking under all circumstances.
+
+**Actors:**  
+- **Booking Service** – processes queued booking requests and performs room allocation.  
+- **Inventory Service** – maintains and updates room availability state.  
+
+**Flow:**  
+1. Booking request is dequeued from the request queue.  
+2. The system checks availability for the requested room type.  
+3. A unique room ID is generated and assigned.  
+4. The room ID is recorded to prevent reuse.  
+5. Inventory count is decremented immediately.  
+6. Reservation is confirmed.  
+
+**Key Concepts Used:**  
+- **Problem of Double Booking:** Without controlled allocation, the same room may be assigned to multiple guests, causing collisions.  
+- **Set Data Structure:** A `Set<String>` stores allocated room IDs, enforcing uniqueness automatically.  
+- **Uniqueness Enforcement:** Checking against the set guarantees no room is reused.  
+- **Mapping Room Types to Assigned Rooms:** A `HashMap<String, Set<String>>` maps room types to allocated IDs for grouped tracking.  
+- **Atomic Logical Operations:** Allocation and inventory update occur together to avoid partial state.  
+- **Inventory Synchronization:** Availability is updated immediately after allocation.  
+
+**Key Requirements:**  
+- Retrieve booking requests from the queue in FIFO order.  
+- Generate and assign a unique room ID for each confirmed reservation.  
+- Prevent reuse of room IDs across allocations.  
+- Update inventory immediately after successful allocation.  
+- Maintain system consistency throughout allocation.  
+
+**Key Benefits:**  
+- Guaranteed uniqueness of room assignments.  
+- Immediate synchronization between booking and inventory.  
+- Elimination of double-booking scenarios.  
+
+**Drawbacks of Previous Use Case:**  
+- UC5 handled request ordering but did not confirm bookings.  
+- Without allocation and uniqueness enforcement, queued requests could still result in conflicting assignments
