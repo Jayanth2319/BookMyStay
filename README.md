@@ -250,3 +250,44 @@ Introduce historical tracking of confirmed bookings to provide operational visib
 **Drawbacks of Previous Use Case:**  
 - UC7 extended booking functionality but did not retain historical data.  
 - Without booking history, completed transactions could not be reviewed or analyzed.  
+
+
+## Use Case 9: Error Handling & Validation
+
+**Goal:**  
+Strengthen system reliability by introducing structured validation and error handling, ensuring that invalid inputs and inconsistent states are detected and handled early.
+
+**Actors:**  
+- **Guest** – provides booking input that must be validated.  
+- **Invalid Booking Validator** – validates input and system state before processing requests.  
+
+**Flow:**  
+1. Guest provides booking input.  
+2. System validates input values and system constraints.  
+3. If validation fails, an error is raised immediately.  
+4. A meaningful failure message is displayed.  
+5. The system prevents invalid state changes and continues running safely.  
+
+**Key Concepts Used:**  
+- **Input Validation:** Ensures incoming data conforms to expected rules.  
+- **Custom Exceptions:** Domain-specific exceptions make error causes explicit.  
+- **Fail-Fast Design:** Detect errors early and stop further processing.  
+- **Guarding System State:** Prevents invalid inventory updates.  
+- **Graceful Failure Handling:** Communicates errors clearly without crashing.  
+- **Correctness over Happy Path:** Designed to handle incorrect usage, not just ideal scenarios.  
+
+**Key Requirements:**  
+- Validate room types before processing bookings.  
+- Prevent inventory from reaching invalid or negative values.  
+- Throw and handle custom exceptions for invalid scenarios.  
+- Display clear and informative failure messages.  
+- Ensure the system remains stable after errors.  
+
+**Key Benefits:**  
+- Early detection of invalid system states.  
+- Reduced risk of silent data corruption.  
+- More stable and predictable application behavior.  
+
+**Drawbacks of Previous Use Case:**  
+- UC8 focused on storing and reporting booking data but assumed valid input.  
+- Without validation, incorrect data could corrupt system state and reports.  
