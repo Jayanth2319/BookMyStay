@@ -4,7 +4,7 @@
  * Entry point for the application.
  * Demonstrates startup and welcome message.
  * 
- * @author Sri
+ * @author Jayanth
  * @version 1.0
  */
 public class UseCase1HotelBookingApp {

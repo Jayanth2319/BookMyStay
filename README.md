@@ -88,6 +88,42 @@ Available: 2
 Type: Suite Room, Beds: 3, Price: ₹5000.0
 Available: 1
 
+## Use Case 5: Booking Request (First-Come-First-Served)
 
-## Author
-Jayanth
+**Goal:**  
+Handle multiple booking requests fairly by introducing a request intake mechanism that preserves arrival order, reflecting real-world booking behavior during peak demand.
+
+**Actors:**  
+- **Reservation** – represents a guest’s intent to book a room.  
+- **Booking Request Queue** – manages and orders incoming booking requests.  
+
+**Flow:**  
+1. Guest submits a booking request.  
+2. The request is added to the booking queue.  
+3. Requests are stored in arrival order.  
+4. Queued requests wait for processing by the allocation system.  
+5. No inventory mutation occurs at this stage.  
+
+**Key Concepts Used:**  
+- **Problem of Simultaneous Requests:** Peak demand can cause multiple requests to arrive nearly at the same time. Without ordering, allocation may be unfair.  
+- **Queue Data Structure:** A `Queue<Reservation>` models waiting lines naturally.  
+- **FIFO Principle:** Ensures earliest requests are processed first.  
+- **Fairness:** No request can bypass another; all guests are treated equally.  
+- **Request Ordering:** Queue preserves insertion order automatically.  
+- **Decoupling Intake from Allocation:** Requests are collected first, processed later.  
+
+**Key Requirements:**  
+- Accept booking requests from guests.  
+- Store requests in a queue structure.  
+- Preserve arrival order.  
+- Ensure no inventory updates occur at this stage.  
+- Prepare requests for subsequent allocation.  
+
+**Key Benefits:**  
+- Fair and deterministic booking request handling.  
+- Predictable system behavior under peak load.  
+- Simplified request coordination before allocation.  
+
+**Drawbacks of Previous Use Case:**  
+- UC4 allowed room visibility but did not handle booking intent.  
+- Without a request intake mechanism, simultaneous booking attempts could not be managed fairly.  
