@@ -208,3 +208,45 @@ Extend the booking model to support optional services, demonstrating how real-wo
 **Drawbacks of Previous Use Case:**  
 - UC6 confirmed room allocation but treated bookings as static entities.  
 - Without add-on support, the system could not model common real-world booking enhancements.  
+
+## Use Case 8: Booking History & Reporting
+
+**Goal:**  
+Introduce historical tracking of confirmed bookings to provide operational visibility, enable audits, and support reporting, reinforcing a persistence-oriented mindset without introducing external storage.
+
+**Actors:**  
+- **Admin** – reviews booking history and reports for operational purposes.  
+- **Booking History** – maintains a record of confirmed reservations.  
+- **Booking Report Service** – generates summaries and reports from stored booking data.  
+
+**Flow:**  
+1. A booking is successfully confirmed.  
+2. The confirmed reservation is added to booking history.  
+3. Booking history maintains records in insertion order.  
+4. Admin requests booking information or reports.  
+5. Stored reservations are retrieved and displayed as required.  
+
+**Key Concepts Used:**  
+- **Operational Visibility:** Real systems require visibility into past transactions.  
+- **List Data Structure:** A `List<Reservation>` stores confirmed bookings in chronological order.  
+- **Ordered Storage:** Bookings are stored in the order they are confirmed, reflecting real-world timelines.  
+- **Historical Tracking:** Stored bookings form an audit trail for later review and verification.  
+- **Reporting Readiness:** Structured booking data enables reporting without reprocessing live flows.  
+- **Separation of Data Storage and Reporting:** History stores data, while reporting logic is handled separately.  
+- **Persistence Mindset (Without Storage Medium):** Data is stored in memory but treated as long-lived, preparing for future persistence layers.  
+
+**Key Requirements:**  
+- Store each confirmed reservation in booking history.  
+- Maintain bookings in the order they are confirmed.  
+- Allow retrieval of stored reservations for review.  
+- Generate summary reports from booking history.  
+- Ensure reporting does not modify stored booking data.  
+
+**Key Benefits:**  
+- Complete and traceable booking audit trail.  
+- Simplified reporting and administrative analysis.  
+- Improved support for customer issue resolution.  
+
+**Drawbacks of Previous Use Case:**  
+- UC7 extended booking functionality but did not retain historical data.  
+- Without booking history, completed transactions could not be reviewed or analyzed.  
